@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title> Food App </title>
+    <style>
+        * { font: size 60px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+        body { background-color: lightblue;}
+        input[type=radio]{
+            border: 0px;
+            width: 2%;
+            height: 0.75em;
+        }
+    </style>
+    <script>
+        function show()
+        {
+            event.preventDefault();
+            let name = document.getElementById("name");
+            let msg = document.getElementById("msg");
+
+            if (name.value == "")
+            {
+                alert("name is empty");
+                msg.innerHTML = "";
+                name.value = "";
+                name.focus();
+            }
+            else if (! name.value.match("^[A-Za-z ]+$"))
+            {
+                alert("name shud contain only alphabets");
+                msg.innerHTML = "";
+                name.value = "";
+                name.focus();
+            }
+            else{
+                let ni = document.getElementById("ni");
+                let si = document.getElementById("si");
+                let ff = document.getElementById("ff");
+                let choice = "";
+                if (ni.checked)     choice = "North Indian";
+                else if (si.checked)     choice = "South Indian";
+                else                choice = "Fast Food";
+                let m = "Name " + name.value + " Choice " + choice
+                msg.innerHTML = m;
+            }
+        }
+    </script>
+    </head>
+<body>
+    <center>
+    <h1> Food App </h1>
+    <form onsubmit="show()">
+        <input type="text" id="name" placeholder="enter ur name">
+        <br><br>
+        <input type="radio" name="f" value="ni" id="ni"> North Indian
+        <input type="radio" name="f" value="si" id="si" checked="true"> South Indian
+        <input type="radio" name="f" value="ff" id="ff"> Fast Food
+        <br><br>
+        <input type="submit">
+    </form>
+    <h2 id="msg"></h2>
+    </center>
+</body>
+</html>
